@@ -1,0 +1,776 @@
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* Style moderne pour le CV */
+:root {
+    /* Nouvelle palette cyberpunk avec 3 couleurs */
+    --neon-blue: #00fff5;      /* Bleu néon principal */
+    --neon-pink: #ff2a6d;      /* Rose néon pour les accents */
+    --dark-blue: #1a1a2e;      /* Bleu foncé pour le fond */
+    
+    /* Variables dérivées pour la cohérence */
+    --primary-color: var(--neon-blue);
+    --secondary-color: var(--neon-pink);
+    --bg-color: var(--dark-blue);
+    --text-color: #ffffff;
+    --gray-dark: rgba(26, 26, 46, 0.95);
+    --gray-light: #8f8f8f;
+    --neon-glow: 0 0 10px var(--neon-blue),
+                 0 0 20px var(--neon-blue),
+                 0 0 30px var(--neon-blue);
+    --neon-glow-secondary: 0 0 10px var(--neon-pink),
+                          0 0 20px var(--neon-pink),
+                          0 0 30px var(--neon-pink);
+}
+
+body {
+    background: linear-gradient(45deg, var(--dark-blue) 0%, #000 100%);
+    color: var(--text-color);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet néon animé autour du CV */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(
+        45deg,
+        var(--neon-blue),
+        transparent,
+        var(--neon-pink),
+        transparent,
+        var(--neon-blue)
+    );
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: animate 20s linear infinite;
+}
+
+.container::after {
+    filter: blur(20px);
+    opacity: 0.5;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 300% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+/* Ajustement pour le contenu */
+section:first-child {
+    margin-top: 0;
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 1200px) {
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+}
+
+/* Effet de scan modifié */
+.container::before {
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.profile-header {
+    background: linear-gradient(135deg, rgba(10, 10, 15, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 245, 0.2);
+}
+
+.profile-photo img {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 245, 0.3);
+}
+
+.job-header {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+.company {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.job-achievements {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.job-achievements li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+
+.job-achievements li::before {
+    content: ">";
+    color: var(--primary-color);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Modification du conteneur du slider */
+.skills-slider {
+    position: relative;
+    padding: 20px 0;
+    overflow: hidden;
+    background: var(--gray-dark);
+    margin: 20px 0;
+}
+
+/* Style pour le texte */
+p, li {
+    color: var(--gray-light);
+}
+
+/* Animation de glitch pour les liens */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+/* Style commun pour les sections */
+section {
+    padding: 30px;
+    margin: 20px 0;
+    background: rgba(26, 26, 46, 0.4); /* Fond plus subtil pour les sections */
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Style amélioré pour le profil personnel */
+.profile p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--secondary-color);
+    text-shadow: 0 0 1px rgba(255, 215, 0, 0.3);
+    padding: 20px;
+    background: rgba(26, 26, 26, 0.5);
+    border-left: 3px solid var(--primary-color);
+    margin: 20px 0;
+}
+
+/* Style amélioré pour les expériences */
+.job {
+    padding: 25px;
+    margin: 20px 0;
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.job-title h3 {
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+    font-size: 1.3em;
+}
+
+.company {
+    color: var(--primary-color);
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.job-date {
+    color: var(--gray-light);
+    font-family: 'Share Tech Mono', monospace;
+    padding: 5px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.job-achievements {
+    list-style: none;
+    padding-left: 0;
+}
+
+.job-achievements li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    color: var(--gray-light);
+    transition: all 0.3s ease;
+}
+
+.job-achievements li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-family: 'Share Tech Mono', monospace;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.job-achievements li:hover {
+    color: var(--secondary-color);
+    transform: translateX(10px);
+}
+
+.job-achievements li:hover::before {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Style amélioré pour la formation */
+.school {
+    padding: 25px;
+    margin: 20px 0;
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 4px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.school h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.school p {
+    color: var(--gray-light);
+    margin: 8px 0;
+}
+
+/* Style amélioré pour les langues */
+.languages li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 15px 0;
+    background: rgba(26, 26, 26, 0.5);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.level {
+    padding: 5px 15px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Style amélioré pour les logiciels */
+.software p {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.software span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Effets de hover communs */
+.job:hover, .school:hover, .languages li:hover, .software span:hover {
+    transform: translateX(10px);
+    background: rgba(255, 215, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+}
+
+/* Animation de scan pour toutes les sections */
+section::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 255, 245, 0.05),
+        transparent
+    );
+    animation: scanLine 3s linear infinite;
+}
+
+@keyframes scanLine {
+    0% { top: -100%; }
+    100% { top: 200%; }
+}
+
+/* Effet de bruit statique */
+.noise-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 215, 0, 0.05) 0%,
+        transparent 1%,
+        rgba(255, 215, 0, 0.05) 2%
+    );
+    pointer-events: none;
+    opacity: 0.1;
+    animation: noiseAnimation 0.5s steps(10) infinite;
+}
+
+@keyframes noiseAnimation {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-1%, -1%); }
+    20% { transform: translate(1%, 1%); }
+    30% { transform: translate(-2%, -2%); }
+    40% { transform: translate(2%, 2%); }
+    50% { transform: translate(-1%, -1%); }
+    60% { transform: translate(1%, 1%); }
+    70% { transform: translate(-2%, -2%); }
+    80% { transform: translate(2%, 2%); }
+    90% { transform: translate(-1%, -1%); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Dupliquer les éléments pour créer un effet infini */
+.skill-icons {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+    animation: slideLeft 30s linear infinite;
+    width: fit-content;
+}
+
+/* Animation du défilement */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause au hover */
+.skill-icons:hover {
+    animation-play-state: paused;
+}
+
+.skill {
+    min-width: 150px;
+    padding: 20px;
+    background: var(--gray-dark);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.skill:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 0 30px var(--primary-color);
+    background: rgba(255, 215, 0, 0.1);
+    z-index: 1;
+}
+
+/* Suppression des boutons de navigation car plus nécessaires */
+.slider-btn {
+    display: none;
+}
+
+/* Style commun pour tous les éléments de type carte */
+.school, .interest-item, .language-item {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Style pour la section Formation */
+.school {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.school h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.school p {
+    margin: 5px 0;
+}
+
+.school::before {
+    content: ">";
+    color: var(--primary-color);
+    font-family: 'Share Tech Mono', monospace;
+    position: absolute;
+    left: -25px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.school:hover::before {
+    opacity: 1;
+    left: -20px;
+}
+
+/* Style pour la section Langues */
+.languages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.languages li {
+    border-left: 3px solid var(--primary-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    background: rgba(26, 26, 26, 0.8);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.languages li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Style pour la section Logiciels */
+.software p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.software span {
+    border-left: 3px solid var(--primary-color);
+    padding: 10px 15px;
+    background: rgba(26, 26, 26, 0.8);
+    transition: all 0.3s ease;
+}
+
+.software span:hover {
+    transform: translateX(10px);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Style pour les Centres d'Intérêts */
+.interest-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.interest-list p {
+    border-left: 3px solid var(--primary-color);
+    padding: 15px;
+    background: rgba(26, 26, 26, 0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.interest-list p:hover {
+    transform: translateX(10px);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Effet de survol commun */
+.school:hover, .language-item:hover, .software span:hover, .interest-list p:hover {
+    border-left-width: 5px;
+    transform: translateX(10px);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Style commun pour les éléments interactifs */
+.job, .school, .languages li, .software span, .interest-list p {
+    position: relative;
+    overflow: hidden;
+    padding: 25px;
+    margin: 20px 0;
+    background: rgba(26, 26, 46, 0.8); /* Fond plus sombre et transparent */
+    border-radius: 4px;
+    border-left: 3px solid var(--neon-blue);
+    transition: all 0.3s ease;
+}
+
+/* Effet de scan horizontal au hover */
+.job::before, .school::before, .languages li::before, 
+.software span::before, .interest-list p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--neon-blue),
+        transparent
+    );
+    animation: none;
+    transition: all 0.5s ease;
+}
+
+/* Animation du scan au hover */
+.job:hover::before, .school:hover::before, 
+.languages li:hover::before, .software span:hover::before, 
+.interest-list p:hover::before {
+    animation: scanHorizontal 2s linear;
+}
+
+@keyframes scanHorizontal {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Maintien des autres effets de hover */
+.job:hover, .school:hover, .languages li:hover, 
+.software span:hover, .interest-list p:hover {
+    transform: translateX(10px);
+    background: rgba(0, 255, 245, 0.05); /* Très léger fond bleu au hover */
+    box-shadow: 0 0 20px rgba(0, 255, 245, 0.2),
+                inset 0 0 15px rgba(0, 255, 245, 0.1);
+    border-left: 3px solid var(--neon-pink);
+}
+
+/* Style des titres */
+h1, h2 {
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+/* Style des éléments mis en avant */
+.company, .level, .job-date {
+    color: var(--neon-pink);
+    text-shadow: 0 0 3px var(--neon-pink);
+}
+
+/* Modification du slider des compétences */
+.skill {
+    border: 1px solid var(--neon-blue);
+    background: rgba(0, 255, 245, 0.05);
+}
+
+.skill:hover {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+/* Effet de scan horizontal modifié */
+.job::before, .school::before, .languages li::before, 
+.software span::before, .interest-list p::before {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--neon-pink),
+        transparent
+    );
+}
+
+/* Style des liens et éléments interactifs */
+a, .job-achievements li::before {
+    color: var(--neon-pink);
+}
+
+a:hover {
+    color: var(--neon-blue);
+    text-shadow: var(--neon-glow);
+}
+
+/* Modification des éléments interactifs */
+.job:hover, .school:hover, .languages li:hover, 
+.software span:hover, .interest-list p:hover {
+    background: rgba(0, 255, 245, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 255, 245, 0.2);
+    border-left: 3px solid var(--neon-pink);
+}
+
+/* Layout principal */
+.cv-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* Style de la photo latérale */
+.side-photo {
+    flex-shrink: 0;
+    width: 300px;
+    height: fit-content;
+    position: sticky;
+    top: 40px;
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--neon-blue);
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(26, 26, 46, 0.8);
+}
+
+/* Effet néon autour de la photo */
+.photo-frame::before,
+.photo-frame::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(
+        45deg,
+        var(--neon-blue),
+        transparent,
+        var(--neon-pink),
+        transparent,
+        var(--neon-blue)
+    );
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: animate 20s linear infinite;
+}
+
+.photo-frame::after {
+    filter: blur(20px);
+    opacity: 0.5;
+}
+
+.photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Ajustement du conteneur principal */
+.container {
+    flex: 1;
+    max-width: 1000px;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 1200px) {
+    .cv-container {
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .side-photo {
+        width: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .cv-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .side-photo {
+        width: 300px;
+        position: static;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cv-container {
+        padding: 10px;
+    }
+    
+    .side-photo {
+        width: 100%;
+        max-width: 300px;
+    }
+}
